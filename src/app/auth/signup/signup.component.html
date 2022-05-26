@@ -24,6 +24,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
             <input matInput type="password" formControlName="password" placeholder="Your password">
+            <mat-error *ngIf="password?.errors?.['required']">Password is required.</mat-error>
             <mat-hint *ngIf="password?.value.length < 8" align="end">{{password?.value.length}}/8</mat-hint>
         </mat-form-field>
 

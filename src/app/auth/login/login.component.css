@@ -1,0 +1,22 @@
+mat-form-field {
+    width: 300px;
+    
+}
+
+h2 {
+    margin-top: 25px;
+    text-decoration: underline;
+}
+
+button {
+    margin-top: 10px;
+}
+
+.icon {
+    font-size: 15px;
+    color: #3f51b5;
+}
+
+mat-checkbox {
+    margin-top: 10px;
+}

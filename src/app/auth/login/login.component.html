@@ -1,1 +1,29 @@
-<p>login works!</p>
+<section class="login-section">
+    <!-- Welcome Message -->
+    <h2 class="text-center">********Welcome to the Fitness Tracker App********</h2>
+
+    <!-- The Sign Up Form -->
+    <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="center center" class="login-form">
+        <!-- Email Address -->
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Your email">
+            <mat-error *ngIf="email?.errors?.['required']">Email is required.</mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">Invalid email.</mat-error>
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Your password">
+            <mat-error *ngIf="password?.errors?.['required']">Password is required.</mat-error>
+            <mat-hint *ngIf="password?.value.length < 8" align="end">{{password?.value.length}}/8</mat-hint>
+        </mat-form-field>
+
+        <!-- Terms checkbox -->
+        <mat-checkbox color="primary">Agree to terms & conditions.*</mat-checkbox>
+
+        <!-- Form Submit -->
+        <button [disabled]="loginForm?.invalid" mat-raised-button type="submit" color="primary" (click)="onLogin()">Sign Up</button>
+    </form>
+</section>

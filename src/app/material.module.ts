@@ -7,27 +7,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule}  from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule} from '@angular/material/list';
+
+
+const matModules = [
+  MatSliderModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatIconModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatCheckboxModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule
+];
 
 @NgModule({
-  imports: [ 
-    MatSliderModule, 
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule
-  ],
-  exports: [
-    MatSliderModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule
-  ]
+  imports: matModules,
+  exports: matModules
 })
 export class MaterialModule { }

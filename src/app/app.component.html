@@ -1,1 +1,44 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sideNav role="navigation">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/signup" (click)="sideNav.toggle()">
+                <mat-icon class="me-2">face</mat-icon>
+                <span>Sign Up</span>
+            </a>
+            <a mat-list-item routerLink="/login" (click)="sideNav.toggle()">
+                <mat-icon class="me-2">login</mat-icon>
+                <span>Log In</span>
+            </a>
+            <a mat-list-item routerLink="/training" (click)="sideNav.toggle()">
+                <mat-icon class="me-2">fitness_center</mat-icon>
+                <span>Training</span>
+            </a>
+            <a mat-list-item routerLink="/" (click)="sideNav.toggle()">
+                <mat-icon class="me-2">logout</mat-icon>
+                <span>Logout</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <div fxHide.gt-xs>
+                <button mat-icon-button (click)="sideNav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+            <div>
+                <a routerLink="/">LOGO</a>
+            </div>
+            <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+                <ul fxLayout fxLayoutGap="15px" class="navigation-items mt-3">
+                    <li><a routerLink="/signup">Sign Up</a></li>
+                    <li><a routerLink="/login">Log In</a></li>
+                    <li><a routerLink="/training">Training</a></li>
+                </ul>
+            </div>
+        </mat-toolbar>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

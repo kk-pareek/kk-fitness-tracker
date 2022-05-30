@@ -1,14 +1,4 @@
-* {
-    box-sizing: border-box;
-}
-
-.app-text {
-    font-weight: 500;
-    background-color: green;
-}
-
-.section {
-    height: 100vh;
-    background-color: red;
-    overflow: hidden;
+.welcome {
+    text-align: center;
+    margin-top: 20px;
 }

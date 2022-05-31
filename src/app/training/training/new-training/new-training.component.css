@@ -1,0 +1,21 @@
+.new-training {
+    /* text-align: center; */
+    /* background: yellow; */
+    /* display: flex; */
+    justify-content: center;
+    padding: 30px;
+    /* align-items: center; */
+}
+
+mat-card {
+    text-align: center;
+    /* margin-top: 20px; */
+    /* background-color: aqua; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+mat-card-title {
+    margin-bottom: 20px;
+}

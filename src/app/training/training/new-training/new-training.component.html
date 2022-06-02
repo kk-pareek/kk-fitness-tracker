@@ -1,7 +1,7 @@
 <section class="new-training" fxFlex fxLayout="row" fxLayoutAligh="center">
-    <mat-card fxFlex="400px">
+    <mat-card fxFlex.gt-sm="400px">
         <mat-card-title>
-            Time for workout!
+            Time for some workout dude!
         </mat-card-title>
 
         <mat-card-content>
@@ -16,6 +16,6 @@
               </mat-form-field>
         </mat-card-content>
 
-        <button mat-raised-button color="primary">Start</button>
+        <button mat-raised-button color="primary" (click)="onStartTraining()">Start</button>
     </mat-card>
 </section>

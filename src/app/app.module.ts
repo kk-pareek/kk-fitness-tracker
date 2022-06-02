@@ -16,6 +16,7 @@ import { HeaderToolbarComponent } from './navigation/header-toolbar/header-toolb
 import { NewTrainingComponent } from './training/training/new-training/new-training.component';
 import { CurrentTrainingComponent } from './training/training/current-training/current-training.component';
 import { PastTrainingsComponent } from './training/training/past-trainings/past-trainings.component';
+import { StopTrainingComponent } from './training/training/current-training/stop-training.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PastTrainingsComponent } from './training/training/past-trainings/past-
     HeaderToolbarComponent,
     NewTrainingComponent,
     CurrentTrainingComponent,
-    PastTrainingsComponent
+    PastTrainingsComponent,
+    StopTrainingComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { PastTrainingsComponent } from './training/training/past-trainings/past-
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [StopTrainingComponent]
 })
 export class AppModule { }

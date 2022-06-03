@@ -16,7 +16,7 @@ import { HeaderToolbarComponent } from './navigation/header-toolbar/header-toolb
 import { NewTrainingComponent } from './training/training/new-training/new-training.component';
 import { CurrentTrainingComponent } from './training/training/current-training/current-training.component';
 import { PastTrainingsComponent } from './training/training/past-trainings/past-trainings.component';
-import { StopTrainingComponent } from './training/training/current-training/stop-training.component';
+import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { StopTrainingComponent } from './training/training/current-training/stop
     NewTrainingComponent,
     CurrentTrainingComponent,
     PastTrainingsComponent,
-    StopTrainingComponent
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +42,8 @@ import { StopTrainingComponent } from './training/training/current-training/stop
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [StopTrainingComponent]
+  entryComponents: [
+    ConfirmationModalComponent
+  ]
 })
 export class AppModule { }

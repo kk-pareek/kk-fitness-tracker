@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{passedData.confirmationHeader}}</h1>
+<div mat-dialog-content>
+    <p>{{passedData.confirmationMessage}}</p>
+</div>
+<div mat-dialog-actions>
+    <button [mat-dialog-close]="false" mat-raised-button color="accent">No</button>
+    <button [mat-dialog-close]="true" mat-raised-button color="primary">Yes</button>
+</div>

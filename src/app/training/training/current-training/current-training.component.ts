@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { StopTrainingComponent } from './stop-training.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationModalComponent } from 'src/app/modals/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-current-training',
@@ -10,18 +10,6 @@ import { StopTrainingComponent } from './stop-training.component';
 export class CurrentTrainingComponent implements OnInit {
   trainingProgress = 0;
   trainingProgressInterval: any;
-  matDialogConfig: MatDialogConfig = {
-    disableClose: false,
-    hasBackdrop: true,
-    backdropClass: '',
-    width: '250px',
-    height: '',
-    position: {
-      top: '50vh',
-      left: '50vw'
-    },
-    panelClass: 'makeItMiddle',
-  }
 
   constructor(private diaglog: MatDialog) { }
 
@@ -40,7 +28,12 @@ export class CurrentTrainingComponent implements OnInit {
   }
 
   onStopTraining() {
-    this.diaglog.open(StopTrainingComponent, this.matDialogConfig);
+    this.diaglog.open(ConfirmationModalComponent, {
+      data: {
+        confirmationHeader: 'Are you sure to exit?',
+        confirmationMessage: `You already got ${this.trainingProgress}%!`,
+      }
+    });
     // this.stopTraining();
   }
 

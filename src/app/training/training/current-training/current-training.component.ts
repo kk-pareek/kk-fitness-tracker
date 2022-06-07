@@ -37,6 +37,8 @@ export class CurrentTrainingComponent implements OnInit {
       data: {
         confirmationHeader: 'Are you sure to exit?',
         confirmationMessage: `You already got ${this.trainingProgress}%!`,
+        rightButtonText: 'Yes',
+        leftButtonText: 'No'
       }
     });
     

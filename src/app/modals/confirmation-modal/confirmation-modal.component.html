@@ -3,6 +3,6 @@
     <p>{{passedData.confirmationMessage}}</p>
 </div>
 <div mat-dialog-actions>
-    <button [mat-dialog-close]="false" mat-raised-button color="accent">No</button>
-    <button [mat-dialog-close]="true" mat-raised-button color="primary">Yes</button>
+    <button [mat-dialog-close]="false" mat-raised-button color="accent">{{passedData.leftButtonText}}</button>
+    <button [mat-dialog-close]="true" mat-raised-button color="primary">{{passedData.rightButtonText}}</button>
 </div>

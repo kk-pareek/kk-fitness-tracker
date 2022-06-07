@@ -10,4 +10,4 @@
     </mat-tab-group>
 </section>
 
-<app-current-training *ngIf="ongoingTraining"></app-current-training>
+<app-current-training *ngIf="ongoingTraining" (exitTraining)="ongoingTraining=false"></app-current-training>

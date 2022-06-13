@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
+import { AuthServiceService } from '../auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private theFormBuilder: FormBuilder,
-    private theDateAdapter: DateAdapter<Date>) {
+    private theDateAdapter: DateAdapter<Date>,
+    private theAuthService: AuthServiceService) {
       this.theDateAdapter.setLocale('en-GB');
   }
 
@@ -29,6 +31,12 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     console.log(this.loginForm.value);
+    this.theAuthService.login(
+      {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      }
+    );
   }
 
   get email() {

@@ -17,6 +17,7 @@ import { NewTrainingComponent } from './training/training/new-training/new-train
 import { CurrentTrainingComponent } from './training/training/current-training/current-training.component';
 import { PastTrainingsComponent } from './training/training/past-trainings/past-trainings.component';
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
+import { AuthServiceService } from './auth/auth-service.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { ConfirmationModalComponent } from './modals/confirmation-modal/confirma
     FlexLayoutModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthServiceService],
   bootstrap: [AppComponent],
   entryComponents: [
     ConfirmationModalComponent

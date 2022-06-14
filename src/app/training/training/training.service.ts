@@ -9,7 +9,7 @@ export class TrainingService {
 
   excerciseChanged = new Subject<Excercise>();
   ongoingExcercise!: Excercise;
-  pastExcercises: Excercise[] = [];
+  pastExcercises: Excercise[] | any = [];
 
   private availableExcercises: Excercise[] = [
     { id: 'crunches', name: 'Crunches', duration: 60, calories: 8 },
@@ -37,7 +37,7 @@ export class TrainingService {
     this.pastExcercises.push({
       ...this.ongoingExcercise,
       date: new Date,
-      state: 'completed'
+      state: 'Completed'
     });
     this.ongoingExcercise = null!;
     this.excerciseChanged.next(this.ongoingExcercise);
@@ -50,10 +50,14 @@ export class TrainingService {
       date: new Date,
       duration: this.ongoingExcercise.duration * (progress / 100),
       calories: this.ongoingExcercise.calories * (progress / 100),
-      state: 'cancelled'
+      state: 'Cancelled'
     });
     this.ongoingExcercise = null!;
     this.excerciseChanged.next(this.ongoingExcercise);
     console.log(this.pastExcercises)
+  }
+
+  getPastTrainingsData() {
+    return this.pastExcercises.slice();
   }
 }

@@ -1,21 +1,23 @@
 <section class="new-training" fxFlex fxLayout="row" fxLayoutAligh="center">
-    <mat-card fxFlex.gt-sm="400px">
-        <mat-card-title>
-            Time for some workout dude!
-        </mat-card-title>
+    <form (ngSubmit)="onStartTraining(f)" #f="ngForm">
+        <mat-card fxFlex.gt-sm="400px">
+            <mat-card-title>
+                Time for some workout dude!
+            </mat-card-title>
 
-        <mat-card-content>
-            <mat-form-field appearance="fill">
-                <mat-label>Select the excercise</mat-label>
-                <mat-select>
-                  <mat-option>None</mat-option>
-                  <mat-option value="Crunches">Crunches</mat-option>
-                  <mat-option value="Leg-raises">Leg-raises</mat-option>
-                  <mat-option value="Push-ups">Push-ups</mat-option>
-                </mat-select>
-              </mat-form-field>
-        </mat-card-content>
+            <mat-card-content>
+                <mat-form-field appearance="fill" #formField>
+                    <mat-label>Select the excercise</mat-label>
+                    <mat-select ngModel name="selectedExcercise" required>
+                        <mat-option *ngFor="let excercise of excercises" [value]="excercise.id"
+                            name="selectedExcercise">
+                            {{excercise.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-card-content>
 
-        <button mat-raised-button color="primary" (click)="onStartTraining()">Start</button>
-    </mat-card>
+            <button mat-raised-button color="primary" [disabled]="f.invalid">Start</button>
+        </mat-card>
+    </form>
 </section>

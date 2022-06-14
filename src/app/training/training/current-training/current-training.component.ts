@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from 'src/app/modals/confirmation-modal/confirmation-modal.component';
+import { TrainingService } from '../training.service';
 
 @Component({
   selector: 'app-current-training',
@@ -13,7 +14,7 @@ export class CurrentTrainingComponent implements OnInit {
   trainingProgress = 0;
   trainingProgressInterval: any;
 
-  constructor(private diaglog: MatDialog) { }
+  constructor(private diaglog: MatDialog, private theTrainingService: TrainingService) { }
 
   ngOnInit(): void {
     this.startTraining();
@@ -52,13 +53,14 @@ export class CurrentTrainingComponent implements OnInit {
   }
 
   startTimer() {
+    const step = (this.theTrainingService.getOngoingTraining().duration / 100 ) * 1000;
     this.trainingProgressInterval = setInterval(() => {
       if (this.trainingProgress < 100) {
-        this.trainingProgress += 5;
+        this.trainingProgress += 1;
       } else {
         clearInterval(this.trainingProgressInterval);
       }
-    }, 1000)
+    }, step)
   }
 
   stopTimer() {

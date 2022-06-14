@@ -10,7 +10,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { TrainingComponent } from './training/training/training.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { HeaderToolbarComponent } from './navigation/header-toolbar/header-toolbar.component';
 import { NewTrainingComponent } from './training/training/new-training/new-training.component';
@@ -18,6 +18,7 @@ import { CurrentTrainingComponent } from './training/training/current-training/c
 import { PastTrainingsComponent } from './training/training/past-trainings/past-trainings.component';
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
 import { AuthServiceService } from './auth/auth-service.service';
+import { TrainingService } from './training/training/training.service';
 
 @NgModule({
   declarations: [
@@ -39,9 +40,13 @@ import { AuthServiceService } from './auth/auth-service.service';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [AuthServiceService],
+  providers: [
+    AuthServiceService,
+    TrainingService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     ConfirmationModalComponent

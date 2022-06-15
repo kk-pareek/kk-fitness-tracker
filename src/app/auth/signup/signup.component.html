@@ -39,7 +39,7 @@
         </mat-form-field>
 
         <!-- Terms checkbox -->
-        <mat-checkbox color="primary">Agree to terms & conditions.*</mat-checkbox>
+        <mat-checkbox disabled checked color="primary">Agree to terms & conditions.*</mat-checkbox>
 
         <!-- Form Submit -->
         <button [disabled]="signUpForm?.invalid" mat-raised-button type="submit" color="primary" (click)="onSignUp()">Sign Up</button>

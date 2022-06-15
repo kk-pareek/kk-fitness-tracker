@@ -17,3 +17,10 @@ body {
     transform: translate(-50%, -50%);
     margin-bottom: 100px;
 }
+
+.mat-tooltip {
+    font-size: 15px !important;
+    /* background-color: #3f51b5; */
+    height: 35px;
+    opacity: 50%;
+}

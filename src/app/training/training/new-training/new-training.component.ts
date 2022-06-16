@@ -1,7 +1,7 @@
 import { JsonpClientBackend } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Excercise } from '../excercise.model';
 import { TrainingService } from '../training.service';
 
@@ -10,21 +10,26 @@ import { TrainingService } from '../training.service';
   templateUrl: './new-training.component.html',
   styleUrls: ['./new-training.component.css']
 })
-export class NewTrainingComponent implements OnInit {
+export class NewTrainingComponent implements OnInit, OnDestroy {
   selectedId!: string;
   availableExcercises: Excercise[] = [];
+  availableExcercisesChangedSubscription!: Subscription;
 
   constructor(private theTrainingService: TrainingService) { }
 
   ngOnInit(): void {
-    this.theTrainingService.fetchAvailableExcercises();
-    this.theTrainingService.availableExcercisesChanged.subscribe(availableExcercises => {
+    this.availableExcercisesChangedSubscription = this.theTrainingService.availableExcercisesChanged.subscribe(availableExcercises => {
       this.availableExcercises = availableExcercises;
-    })
+    });
+    this.theTrainingService.fetchAvailableExcercises();
   }
 
   onStartTraining(form: NgForm) {
     this.theTrainingService.startTraining(form.value.selectedExcercise);
+  }
+
+  ngOnDestroy() {
+      this.availableExcercisesChangedSubscription.unsubscribe();
   }
 
 }

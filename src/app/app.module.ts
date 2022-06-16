@@ -19,6 +19,9 @@ import { PastTrainingsComponent } from './training/training/past-trainings/past-
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
 import { AuthServiceService } from './auth/auth-service.service';
 import { TrainingService } from './training/training/training.service';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { TrainingService } from './training/training/training.service';
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [
     AuthServiceService,

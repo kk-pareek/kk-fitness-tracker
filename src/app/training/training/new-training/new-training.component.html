@@ -9,7 +9,7 @@
                 <mat-form-field appearance="fill" #formField>
                     <mat-label>Select the excercise</mat-label>
                     <mat-select ngModel name="selectedExcercise" required>
-                        <mat-option *ngFor="let excercise of excercises" [value]="excercise.id"
+                        <mat-option *ngFor="let excercise of availableExcercises" [value]="excercise.name"
                             name="selectedExcercise">
                             {{excercise.name}}
                         </mat-option>

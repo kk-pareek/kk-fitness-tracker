@@ -1,32 +1,31 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Subject } from 'rxjs';
 import { Excercise } from './excercise.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainingService {
 
-  excerciseChanged = new Subject<Excercise>();
+  availableExcercisesChanged = new Subject<Excercise[]>();
+  ongoingExcerciseChanged = new Subject<Excercise>();
+
   ongoingExcercise!: Excercise;
   pastExcercises: Excercise[] | any = [];
+  availableExcercises: Excercise[] = [];
 
-  private availableExcercises: Excercise[] = [
-    { id: 'crunches', name: 'Crunches', duration: 60, calories: 8 },
-    { id: 'leg-raises', name: 'Leg Raises', duration: 30, calories: 8 },
-    { id: 'burpees', name: 'Burpees', duration: 30, calories: 8 },
-    { id: 'pushups', name: 'Pushups', duration: 60, calories: 8 }
-  ];
-
-  constructor() { }
+  constructor(private db: AngularFirestore) { }
 
   getAvailableExcercises() {
     return this.availableExcercises.slice();
   }
 
-  startTraining(selectedId: string) {
-    this.ongoingExcercise = this.availableExcercises.find(excercise =>  excercise.id === selectedId)!;
-    this.excerciseChanged.next(this.ongoingExcercise);
+  startTraining(selectedExcerciseName: string) {
+    this.ongoingExcercise = this.availableExcercises.find(excercise => excercise.name === selectedExcerciseName)!;
+    this.ongoingExcerciseChanged.next(this.ongoingExcercise);
   }
 
   getOngoingTraining() {
@@ -40,7 +39,7 @@ export class TrainingService {
       state: 'Completed'
     });
     this.ongoingExcercise = null!;
-    this.excerciseChanged.next(this.ongoingExcercise);
+    this.ongoingExcerciseChanged.next(this.ongoingExcercise);
     console.log(this.pastExcercises)
   }
 
@@ -53,11 +52,27 @@ export class TrainingService {
       state: 'Cancelled'
     });
     this.ongoingExcercise = null!;
-    this.excerciseChanged.next(this.ongoingExcercise);
+    this.ongoingExcerciseChanged.next(this.ongoingExcercise);
     console.log(this.pastExcercises)
   }
 
   getPastTrainingsData() {
     return this.pastExcercises.slice();
+  }
+
+  fetchAvailableExcercises() {
+    this.db.collection('availableExcercises').snapshotChanges().pipe(map((responseArray: any) => {
+      return responseArray.map((responseArrayElement: any) => {
+        return {
+          id: responseArrayElement.payload.doc.id,
+          name: responseArrayElement.payload.doc.data().name,
+          duration: responseArrayElement.payload.doc.data().duration,
+          calories: responseArrayElement.payload.doc.data().calories
+        }
+      })
+    })).subscribe(availableExcercises => {
+      this.availableExcercises = availableExcercises;
+      this.availableExcercisesChanged.next(this.availableExcercises);
+    });
   }
 }

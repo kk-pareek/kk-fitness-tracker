@@ -10,18 +10,18 @@ import { TrainingService } from './training.service';
 export class TrainingComponent implements OnInit, OnDestroy {
 
   ongoingTraining = false;
-  excerciseChangedSubscription!: Subscription;
+  ongoingExcerciseChangedSubscription!: Subscription;
 
   constructor(private theTrainingService: TrainingService) { }
 
   ngOnInit(): void {
-    this.excerciseChangedSubscription = this.theTrainingService.excerciseChanged.subscribe(excercise => {
+    this.ongoingExcerciseChangedSubscription = this.theTrainingService.ongoingExcerciseChanged.subscribe(excercise => {
       this.ongoingTraining = excercise != null ? true : false;
     })
   }
 
   ngOnDestroy() {
-      this.excerciseChangedSubscription.unsubscribe();
+      this.ongoingExcerciseChangedSubscription.unsubscribe();
   }
 
 }

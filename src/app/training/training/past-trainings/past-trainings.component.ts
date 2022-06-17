@@ -26,13 +26,13 @@ export class PastTrainingsComponent implements OnInit, AfterViewInit, OnDestroy 
   ngOnInit(): void {
     this.pastExcercisesChangedSubscription = this.theTrainingService.pastExcercisesChanged.subscribe((pastExcercises: any) => {
       this.pastTrainingsData = new MatTableDataSource(pastExcercises);
+      this.pastTrainingsData.sort = this.sort;
+      this.pastTrainingsData.paginator = this.paginator;
     })
     this.theTrainingService.fetchPastExcercises();
   }
 
   ngAfterViewInit() {
-    this.pastTrainingsData.sort = this.sort;
-    this.pastTrainingsData.paginator = this.paginator;
   }
 
   applyFilter(event: any) {

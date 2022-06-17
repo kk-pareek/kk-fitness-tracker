@@ -12,6 +12,7 @@ export class TrainingService {
 
   availableExcercisesChanged = new Subject<Excercise[]>();
   ongoingExcerciseChanged = new Subject<Excercise>();
+  pastExcercisesChanged = new Subject<Excercise[]>();
 
   ongoingExcercise!: Excercise;
   pastExcercises: Excercise[] | any = [];
@@ -33,7 +34,7 @@ export class TrainingService {
   }
 
   onCompleteExcercise() {
-    this.pastExcercises.push({
+    this.db.collection('finishedExcercises').add({
       ...this.ongoingExcercise,
       date: new Date,
       state: 'Completed'
@@ -44,7 +45,7 @@ export class TrainingService {
   }
 
   onCancelExcercise(progress: number) {
-    this.pastExcercises.push({
+    this.db.collection('finishedExcercises').add({
       ...this.ongoingExcercise,
       date: new Date,
       duration: this.ongoingExcercise.duration * (progress / 100),
@@ -54,10 +55,6 @@ export class TrainingService {
     this.ongoingExcercise = null!;
     this.ongoingExcerciseChanged.next(this.ongoingExcercise);
     console.log(this.pastExcercises)
-  }
-
-  getPastTrainingsData() {
-    return this.pastExcercises.slice();
   }
 
   fetchAvailableExcercises() {
@@ -74,5 +71,12 @@ export class TrainingService {
       this.availableExcercises = availableExcercises;
       this.availableExcercisesChanged.next(this.availableExcercises);
     });
+  }
+
+  fetchPastExcercises() {
+    this.db.collection('finishedExcercises').valueChanges().subscribe(pastExcercises => {
+      this.pastExcercises = pastExcercises;
+      this.pastExcercisesChanged.next(this.pastExcercises);
+    })
   }
 }

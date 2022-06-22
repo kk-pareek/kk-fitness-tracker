@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { TrainingService } from '../training/training/training.service';
 import { AuthData } from './auth-data.model';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class AuthServiceService {
   authStatus = new Subject<boolean>();
   isAuthenticated = false;
 
-  constructor(private router: Router, private fireAuth: AngularFireAuth) { }
+  constructor(private router: Router, private fireAuth: AngularFireAuth, private theTrainingService: TrainingService) { }
 
   registerUser(authData: AuthData) {
     this.fireAuth.createUserWithEmailAndPassword(authData.email, authData.password).then(result => {
@@ -37,6 +38,7 @@ export class AuthServiceService {
     this.fireAuth.signOut();
     this.isAuthenticated = false;
     this.authStatus.next(this.isAuthenticated);
+    this.theTrainingService.cancelFirebaseSubscriptions();
   }
 
   isAuth() {

@@ -14,9 +14,21 @@ export class AuthServiceService {
 
   constructor(private router: Router, private fireAuth: AngularFireAuth, private theTrainingService: TrainingService) { }
 
+  initAuthListener() {
+    this.fireAuth.authState.subscribe(user => {
+      if (user) {
+        console.log('user registered successfully!');
+        this.isAuthenticated = true;
+        this.authStatus.next(this.isAuthenticated);
+        this.router.navigate(['/training']);
+      } else {
+
+      }
+    })
+  }
+
   registerUser(authData: AuthData) {
     this.fireAuth.createUserWithEmailAndPassword(authData.email, authData.password).then(result => {
-      this.onAuthSuccess();
       console.log(result);
     })
     .catch(err => {
@@ -26,7 +38,6 @@ export class AuthServiceService {
 
   login(authData: AuthData) {
     this.fireAuth.signInWithEmailAndPassword(authData.email, authData.password).then(result => {
-      this.onAuthSuccess();
       console.log(result);
     })
     .catch(err => {
@@ -43,12 +54,5 @@ export class AuthServiceService {
 
   isAuth() {
     return this.isAuthenticated;
-  }
-
-  onAuthSuccess() {
-    console.log('user registered successfully!');
-    this.isAuthenticated = true;
-    this.authStatus.next(this.isAuthenticated);
-    this.router.navigate(['/training']);
   }
 }

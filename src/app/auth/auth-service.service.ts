@@ -1,50 +1,52 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthData } from './auth-data.model';
-import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
   authStatus = new Subject<boolean>();
-  private user!: User;
+  isAuthenticated = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private fireAuth: AngularFireAuth) { }
 
   registerUser(authData: AuthData) {
-    this.user = {
-      email: authData.email,
-      userId: Math.round(Math.random() * 10000).toString()
-    };
-    this.onAuthSuccess();
+    this.fireAuth.createUserWithEmailAndPassword(authData.email, authData.password).then(result => {
+      this.onAuthSuccess();
+      console.log(result);
+    })
+    .catch(err => {
+      console.error(err);
+    });
   }
 
   login(authData: AuthData) {
-    this.user = {
-      email: authData.email,
-      userId: Math.round(Math.random() * 10000).toString()
-    };
-    this.onAuthSuccess();
+    this.fireAuth.signInWithEmailAndPassword(authData.email, authData.password).then(result => {
+      this.onAuthSuccess();
+      console.log(result);
+    })
+    .catch(err => {
+      console.error(err);
+    })
   }
 
   logout() {
-    this.user = null as any;
-    this.authStatus.next(false);
-  }
-
-  getUser() {
-    return { ...this.user }
+    this.fireAuth.signOut();
+    this.isAuthenticated = false;
+    this.authStatus.next(this.isAuthenticated);
   }
 
   isAuth() {
-    return this.user != null;
+    return this.isAuthenticated;
   }
 
   onAuthSuccess() {
     console.log('user registered successfully!');
-    this.authStatus.next(true);
+    this.isAuthenticated = true;
+    this.authStatus.next(this.isAuthenticated);
     this.router.navigate(['/training']);
   }
 }

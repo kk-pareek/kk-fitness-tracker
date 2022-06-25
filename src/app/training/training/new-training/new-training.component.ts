@@ -14,6 +14,7 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
   selectedId!: string;
   availableExcercises: Excercise[] = [];
   availableExcercisesChangedSubscription!: Subscription;
+  isAvailableExcercisesLoading = false;
 
   constructor(private theTrainingService: TrainingService) { }
 

@@ -29,3 +29,7 @@ button {
 mat-checkbox {
     margin-top: 10px;
 }
+
+.signup-section {
+    justify-content: center;
+}

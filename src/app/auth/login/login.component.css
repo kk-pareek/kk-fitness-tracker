@@ -3,10 +3,14 @@ mat-form-field {
     
 }
 
-h2 {
+.login-section {
+    justify-content: center;
+}
+
+/* h2 {
     margin-top: 25px;
     text-decoration: underline;
-}
+} */
 
 button {
     margin-top: 10px;

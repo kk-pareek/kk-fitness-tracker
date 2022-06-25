@@ -24,6 +24,7 @@
         <mat-checkbox matTooltip="{terms & conditions not found}" [matTooltipPosition]="tooltipPosition.value!" disabled checked color="primary">Agree to terms & conditions.*</mat-checkbox>
 
         <!-- Form Submit -->
-        <button [disabled]="loginForm?.invalid" mat-raised-button type="submit" color="primary" (click)="onLogin()">Sign Up</button>
+        <button *ngIf="!isLoading" [disabled]="loginForm?.invalid" mat-raised-button type="submit" color="primary" (click)="onLogin()">Sign Up</button>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
     </form>
 </section>

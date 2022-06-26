@@ -36,6 +36,7 @@ export class AuthServiceService {
     })
     .catch(err => {
       console.error(err);
+      this.theUiService.showSnackbar(err.message, 'Close', 10000);
       this.theUiService.loadingStateChanged.next(false);
     });
   }
@@ -48,6 +49,7 @@ export class AuthServiceService {
     })
     .catch(err => {
       console.error(err);
+      this.theUiService.showSnackbar(err.message, 'Close', 10000);
       this.theUiService.loadingStateChanged.next(false);
     })
   }

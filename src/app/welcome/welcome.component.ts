@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from '../auth/auth-service.service';
 
 @Component({
   selector: 'app-welcome',
@@ -18,7 +19,7 @@ export class WelcomeComponent implements OnInit {
     "Live, don't just exist!!"
   ]
 
-  constructor(private theRouter: Router) { }
+  constructor(private theRouter: Router, private theAuthService: AuthServiceService) { }
 
   ngOnInit(): void {
     this.currentQuote = this.quotesCollection[Math.floor(this.getRandomIndex(1, 5))-1];
@@ -29,6 +30,6 @@ export class WelcomeComponent implements OnInit {
   }
 
   routeToSignUp() {
-    this.theRouter.navigate(['/signup']);
+    this.theAuthService.isAuthenticated ? this.theRouter.navigate(['/training']) : this.theRouter.navigate(['/signup']);
   }
 }

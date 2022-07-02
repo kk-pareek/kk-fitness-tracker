@@ -7,17 +7,6 @@
     overflow: hidden;
 }
 
-h1 {
-    /* position: absolute; */
-    /* text-align: center; */
-    font-size: 70px;
-    font-weight: 600;
-    background-image: linear-gradient(to left, #553c9a, #b393d3);
-    color: transparent;
-    background-clip: text;
-    /* -webkit-background-clip: text; */
-}
-
 .welcome-container {
     position: relative;
     text-align: center;
@@ -53,6 +42,9 @@ h1 {
         font-family: Georgia, 'Times New Roman', Times, serif;
     }
 }
+
+
+
 
 .start-button {
     position: absolute;

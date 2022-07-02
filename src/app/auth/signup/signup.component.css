@@ -33,3 +33,7 @@ mat-checkbox {
 .signup-section {
     justify-content: center;
 }
+
+a {
+    font-weight: 500;
+}

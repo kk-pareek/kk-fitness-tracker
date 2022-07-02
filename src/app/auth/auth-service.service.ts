@@ -33,6 +33,7 @@ export class AuthServiceService {
     this.fireAuth.createUserWithEmailAndPassword(authData.email, authData.password).then(result => {
       console.log(result);
       this.theUiService.loadingStateChanged.next(false);
+      this.setCurrentUserInBrowserLocalStorage(authData.email);
     })
     .catch(err => {
       console.error(err);
@@ -46,6 +47,7 @@ export class AuthServiceService {
     this.fireAuth.signInWithEmailAndPassword(authData.email, authData.password).then(result => {
       console.log(result);
       this.theUiService.loadingStateChanged.next(false);
+      this.setCurrentUserInBrowserLocalStorage(authData.email);
     })
     .catch(err => {
       console.error(err);
@@ -63,5 +65,13 @@ export class AuthServiceService {
 
   isAuth() {
     return this.isAuthenticated;
+  }
+
+  setCurrentUserInBrowserLocalStorage(userEmail: string) {
+    localStorage.setItem('currentUser', userEmail);
+  }
+
+  getCurrentUserFromBrowserLocalStorage() {
+    return localStorage.getItem('currentUser');
   }
 }

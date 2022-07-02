@@ -1,4 +1,58 @@
-.welcome {
+.welcome-section {
     text-align: center;
-    margin-top: 20px;
+    position: relative;
+}
+
+.landing-wallpaper {
+    overflow: hidden;
+}
+
+.welcome-container {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    max-height: 100vh;
+    overflow-y: hidden;
+}
+
+.quote {
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+
+    font-size: 50px;
+    font-weight: 600;
+    color: #3f51b5;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+@media screen and (max-width: 480px) {
+    .quote {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        line-height: 1;
+
+        font-size: 40px;
+        font-weight: 600;
+        color: #3f51b5;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .start-button {
+        position: absolute;
+        top: 50% !important;
+        color: white;
+    }
+}
+
+.start-button {
+    position: absolute;
+    top: 58%;
+    color: white;
 }

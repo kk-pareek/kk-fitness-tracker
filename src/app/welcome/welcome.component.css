@@ -11,6 +11,8 @@
     position: relative;
     text-align: center;
     overflow: hidden;
+    max-height: 100vh;
+    overflow-y: hidden;
 }
 
 .quote {
@@ -41,13 +43,16 @@
         color: #3f51b5;
         font-family: Georgia, 'Times New Roman', Times, serif;
     }
+
+    .start-button {
+        position: absolute;
+        top: 50% !important;
+        color: white;
+    }
 }
-
-
-
 
 .start-button {
     position: absolute;
-    top: 55%;
+    top: 58%;
     color: white;
 }

@@ -1,4 +1,4 @@
-<div class="welcome" fxFlex fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="center center" fxLayoutGap.gt-md="20px">
+<!-- <div class="welcome" fxFlex fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="center center" fxLayoutGap.gt-md="20px">
     <section>
         <div class="activity">
             <h1>Activity</h1>
@@ -19,4 +19,20 @@
             <p>When the going gets tough, put one foot in front of the other and just keep going. Don’t give up.</p>
         </div>
     </section>
+</div> -->
+<!-- <section class="welcome-section">
+    <div class="landing-wallpaper">
+        <img src="../../assets/ft.jpeg" alt="">
+        <div class="quote">
+            <h1>Don't stop pal!!</h1>
+        </div>
+    </div>
+</section> -->
+
+<div class="welcome-container" fxLayout="column" fxLayoutAlign="center center">
+    <img src="../../assets/ft.jpeg">
+    <div class="quote-div">
+        <h1 class="quote">{{currentQuote}}</h1>
+    </div>
+    <button class="start-button" mat-raised-button color="primary" (click)="routeToSignUp()">Start</button>
 </div>

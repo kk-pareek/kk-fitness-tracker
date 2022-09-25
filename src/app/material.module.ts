@@ -20,6 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 const matModules = [
@@ -43,7 +44,8 @@ const matModules = [
   MatSortModule,
   MatPaginatorModule,
   MatTooltipModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatStepperModule
 ];
 
 @NgModule({

@@ -4,9 +4,14 @@ a, ul {
     color: white;
 }
 
-.logo {
+/* .logo {
     width: 110px;
     height: 35px;
     margin-left: 20px;
     margin-bottom: 7px;
+    margin-top: 7px;
+} */
+
+.app {
+    margin-top: 18px;
 }

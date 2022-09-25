@@ -4,10 +4,11 @@
             <mat-icon>menu</mat-icon>
         </button>
     </div>
-    <div>
-        <a routerLink="/">
-            <img class="logo" src="../../../assets/logo.png" alt="">
-        </a>
+    <div fxFlex fxLayout fxLayoutAlign="flex-start">
+        <ul fxLayout fxLayoutGap="15px">
+            <li class="app"><a style="font-weight: 550" routerLink="/"><i class="material-icons">directions_run</i>FitTracker</a></li>
+            <!-- <li class="app"><a style="font-weight: 550" routerLink="/pomodoro"><i class="material-icons">timer</i>PoMoDoRo</a></li> -->
+        </ul>
     </div>
     <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
         <ul fxLayout fxLayoutGap="15px" class="navigation-items mt-3">

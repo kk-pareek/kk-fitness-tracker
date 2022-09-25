@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PomodoroComponent } from './apps/pomodoro/pomodoro.component';
 import { AuthGuardGuard } from './auth/auth-guard.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -23,6 +24,10 @@ const routes: Routes = [
     path: 'training',
     component: TrainingComponent,
     canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'pomodoro',
+    component: PomodoroComponent
   }
 ];
 

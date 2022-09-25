@@ -24,6 +24,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { UiService } from './shared/ui.service';
+import { PomodoroComponent } from './apps/pomodoro/pomodoro.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { UiService } from './shared/ui.service';
     NewTrainingComponent,
     CurrentTrainingComponent,
     PastTrainingsComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    PomodoroComponent
   ],
   imports: [
     BrowserModule,
